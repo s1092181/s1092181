@@ -11,6 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.rounded.AccountBox
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,18 +55,30 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FirstScreen(navController: NavHostController, modifier: Modifier = Modifier) {
-    val context = LocalContext.current  //取得App的運行環境
+    val context = LocalContext.current  // 取得App的運行環境
+    var buttonText by remember { mutableStateOf("作者: 資管系余汶芯") }
+
     Column(modifier = Modifier.fillMaxSize()) {
         Column {
-
             Text(
                 text = "簡介",
                 color = Color.Blue,
                 modifier = modifier
             )
+            Image(
+                painter = painterResource(id = R.drawable.service),
+                contentDescription = null
+            )
+            Button(
+                onClick = { buttonText = "作者: 資管系余汶芯" },
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+            ) {
+                Text(text = buttonText)
+            }
         }
     }
 }
+
 
 @Composable
 fun SecondScreen(navController: NavHostController) {
