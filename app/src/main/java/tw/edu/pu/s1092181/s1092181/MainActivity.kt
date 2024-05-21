@@ -5,8 +5,12 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
@@ -30,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -82,13 +87,51 @@ fun FirstScreen(navController: NavHostController, modifier: Modifier = Modifier)
 
 @Composable
 fun SecondScreen(navController: NavHostController) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text(
             text = "主要機構",
-            color = Color.Red
+            color = Color.Red,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(onClick = {
+                // Handle navigation to 台中愛心家園
+            }) {
+                Text(text = "台中愛心家園")
+            }
+
+            Button(onClick = {
+                // Handle navigation to 瑪麗亞學園
+            }) {
+                Text(text = "瑪麗亞學園")
+            }
+        }
+
+        Text(
+            text = "「瑪利亞學園」提供重度以及極重度多重障礙者日間照顧服務，以健康照護為基礎，支持生活多面向參與及學習概念，輔助發展重度身心障礙者自我概念為最終服務目標。",
+            color = Color.Black
+        )
+        Text(
+            text = "\n"
+        )
+        Text(
+            text = "雙擊以下圖片，可以觀看瑪利亞學園地圖",
+            color = Color.Blue
+        )
+        Image(
+            painter = painterResource(id = R.drawable.campus),
+            contentDescription = null
         )
     }
 }
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
