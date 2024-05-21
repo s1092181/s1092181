@@ -3,12 +3,16 @@ package tw.edu.pu.s1092181.s1092181
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import tw.edu.pu.s1092181.s1092181.ui.theme.S1092181Theme
 
@@ -22,7 +26,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+//                    Greeting("Android")
+                    FirstScreen("")
                 }
             }
         }
@@ -35,6 +40,20 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier
     )
+}
+@Composable
+fun FirstScreen(name: String, modifier: Modifier = Modifier) {
+    Column {
+        Image(
+            painter = painterResource(id = R.drawable.maria),
+            contentDescription = null
+        )
+        Text(
+            text = "簡介",color= Color.Blue,
+            modifier = modifier
+        )
+    }
+
 }
 
 @Preview(showBackground = true)
